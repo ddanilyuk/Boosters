@@ -8,6 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
+
 struct AnimalCategoriesView: View {
 
     let store: Store<AnimalCategories.State, AnimalCategories.Action>
@@ -24,6 +25,22 @@ struct AnimalCategoriesView: View {
                 .onAppear {
                     viewStore.send(.onAppear)
                 }
+                .alert(
+                    self.store.scope(state: \.alert),
+                    dismiss: .dismissAlert
+                )
+                .navigationLink(
+                    unwrapping: viewStore.binding(\.$factScreen),
+                    destination: { value in
+                        AnimalFactsView(
+                            store: Store(
+                                initialState: value,
+                                reducer: AnimalFacts.reducer,
+                                environment: .init()
+                            )
+                        )
+                    }
+                )
                 .navigationTitle("Animals")
             }
         }

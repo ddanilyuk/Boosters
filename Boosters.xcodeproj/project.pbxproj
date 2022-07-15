@@ -36,6 +36,7 @@
 		5F7126402881C850008CA35E /* AnimalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71263F2881C850008CA35E /* AnimalCellView.swift */; };
 		5F7126432881C870008CA35E /* AnimalCellStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126422881C870008CA35E /* AnimalCellStore.swift */; };
 		5F7126462881D352008CA35E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7126452881D352008CA35E /* Kingfisher */; };
+		5F7126482881EE55008CA35E /* SwiftUI+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126472881EE55008CA35E /* SwiftUI+Navigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		5F71263A2881C2FE008CA35E /* AppDelegateStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateStore.swift; sourceTree = "<group>"; };
 		5F71263F2881C850008CA35E /* AnimalCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCellView.swift; sourceTree = "<group>"; };
 		5F7126422881C870008CA35E /* AnimalCellStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCellStore.swift; sourceTree = "<group>"; };
+		5F7126472881EE55008CA35E /* SwiftUI+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Navigation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7126072881A790008CA35E /* Publisher+Ext.swift */,
+				5F7126472881EE55008CA35E /* SwiftUI+Navigation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				5F7125CE28819D84008CA35E /* BoostersApp.swift in Sources */,
 				5F71263C2881C2FE008CA35E /* AppDelegateStore.swift in Sources */,
 				5F7126182881A82D008CA35E /* AppView.swift in Sources */,
+				5F7126482881EE55008CA35E /* SwiftUI+Navigation.swift in Sources */,
 				5F7126262881AAA9008CA35E /* HTTPMethod.swift in Sources */,
 				5F71262E2881AB78008CA35E /* APIResponse.swift in Sources */,
 				5F71260C2881A7B2008CA35E /* AnimalFactsView.swift in Sources */,
