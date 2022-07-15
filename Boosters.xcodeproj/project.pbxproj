@@ -14,6 +14,15 @@
 		5F7125DF28819D86008CA35E /* BoostersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125DE28819D86008CA35E /* BoostersTests.swift */; };
 		5F7125E928819D86008CA35E /* BoostersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125E828819D86008CA35E /* BoostersUITests.swift */; };
 		5F7125EB28819D86008CA35E /* BoostersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125EA28819D86008CA35E /* BoostersUITestsLaunchTests.swift */; };
+		5F7125F92881A5F9008CA35E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7125F82881A5F9008CA35E /* ComposableArchitecture */; };
+		5F7126002881A681008CA35E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125FF2881A681008CA35E /* APIClient.swift */; };
+		5F7126042881A707008CA35E /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126032881A707008CA35E /* Animal.swift */; };
+		5F7126062881A70C008CA35E /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126052881A70C008CA35E /* Fact.swift */; };
+		5F7126082881A790008CA35E /* Publisher+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126072881A790008CA35E /* Publisher+Ext.swift */; };
+		5F71260A2881A7AA008CA35E /* AnimalFactsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126092881A7AA008CA35E /* AnimalFactsStore.swift */; };
+		5F71260C2881A7B2008CA35E /* AnimalFactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71260B2881A7B2008CA35E /* AnimalFactsView.swift */; };
+		5F71260E2881A7BF008CA35E /* AnimalCategoriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71260D2881A7BF008CA35E /* AnimalCategoriesStore.swift */; };
+		5F7126102881A7C9008CA35E /* AnimalCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71260F2881A7C9008CA35E /* AnimalCategoriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +53,14 @@
 		5F7125E428819D86008CA35E /* BoostersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoostersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7125E828819D86008CA35E /* BoostersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostersUITests.swift; sourceTree = "<group>"; };
 		5F7125EA28819D86008CA35E /* BoostersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5F7125FF2881A681008CA35E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		5F7126032881A707008CA35E /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		5F7126052881A70C008CA35E /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
+		5F7126072881A790008CA35E /* Publisher+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Ext.swift"; sourceTree = "<group>"; };
+		5F7126092881A7AA008CA35E /* AnimalFactsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactsStore.swift; sourceTree = "<group>"; };
+		5F71260B2881A7B2008CA35E /* AnimalFactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactsView.swift; sourceTree = "<group>"; };
+		5F71260D2881A7BF008CA35E /* AnimalCategoriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCategoriesStore.swift; sourceTree = "<group>"; };
+		5F71260F2881A7C9008CA35E /* AnimalCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCategoriesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7125F92881A5F9008CA35E /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +112,10 @@
 		5F7125CC28819D84008CA35E /* Boosters */ = {
 			isa = PBXGroup;
 			children = (
+				5F7125FE2881A66C008CA35E /* Clients */,
+				5F7125FB2881A610008CA35E /* Modules */,
+				5F7125FC2881A62E008CA35E /* Models */,
+				5F7125FD2881A644008CA35E /* Extensions */,
 				5F7125CD28819D84008CA35E /* BoostersApp.swift */,
 				5F7125CF28819D84008CA35E /* ContentView.swift */,
 				5F7125D128819D86008CA35E /* Assets.xcassets */,
@@ -127,6 +149,58 @@
 			path = BoostersUITests;
 			sourceTree = "<group>";
 		};
+		5F7125FB2881A610008CA35E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126022881A6A1008CA35E /* AnimalFacts */,
+				5F7126012881A69C008CA35E /* AnimalCategories */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5F7125FC2881A62E008CA35E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126032881A707008CA35E /* Animal.swift */,
+				5F7126052881A70C008CA35E /* Fact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5F7125FD2881A644008CA35E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126072881A790008CA35E /* Publisher+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5F7125FE2881A66C008CA35E /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				5F7125FF2881A681008CA35E /* APIClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		5F7126012881A69C008CA35E /* AnimalCategories */ = {
+			isa = PBXGroup;
+			children = (
+				5F71260D2881A7BF008CA35E /* AnimalCategoriesStore.swift */,
+				5F71260F2881A7C9008CA35E /* AnimalCategoriesView.swift */,
+			);
+			path = AnimalCategories;
+			sourceTree = "<group>";
+		};
+		5F7126022881A6A1008CA35E /* AnimalFacts */ = {
+			isa = PBXGroup;
+			children = (
+				5F7126092881A7AA008CA35E /* AnimalFactsStore.swift */,
+				5F71260B2881A7B2008CA35E /* AnimalFactsView.swift */,
+			);
+			path = AnimalFacts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +217,9 @@
 			dependencies = (
 			);
 			name = Boosters;
+			packageProductDependencies = (
+				5F7125F82881A5F9008CA35E /* ComposableArchitecture */,
+			);
 			productName = Boosters;
 			productReference = 5F7125CA28819D84008CA35E /* Boosters.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +292,9 @@
 				Base,
 			);
 			mainGroup = 5F7125C128819D83008CA35E;
+			packageReferences = (
+				5F7125F72881A5F9008CA35E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 5F7125CB28819D84008CA35E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +337,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7126082881A790008CA35E /* Publisher+Ext.swift in Sources */,
 				5F7125D028819D84008CA35E /* ContentView.swift in Sources */,
+				5F71260A2881A7AA008CA35E /* AnimalFactsStore.swift in Sources */,
+				5F71260E2881A7BF008CA35E /* AnimalCategoriesStore.swift in Sources */,
+				5F7126102881A7C9008CA35E /* AnimalCategoriesView.swift in Sources */,
+				5F7126042881A707008CA35E /* Animal.swift in Sources */,
+				5F7126062881A70C008CA35E /* Fact.swift in Sources */,
 				5F7125CE28819D84008CA35E /* BoostersApp.swift in Sources */,
+				5F71260C2881A7B2008CA35E /* AnimalFactsView.swift in Sources */,
+				5F7126002881A681008CA35E /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +671,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F7125F72881A5F9008CA35E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.38.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F7125F82881A5F9008CA35E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F7125F72881A5F9008CA35E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5F7125C228819D83008CA35E /* Project object */;
 }
