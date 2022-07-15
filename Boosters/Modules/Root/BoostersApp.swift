@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
-struct BoostersApp: App {
+struct BoostersApp: SwiftUI.App {
+
+    // TODO: Change?
+    static let store = Store<App.State, App.Action>(
+        initialState: App.State(),
+        reducer: App.reducer,
+        environment: App.Environment.live
+    )
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView(store: BoostersApp.store)
         }
     }
 }

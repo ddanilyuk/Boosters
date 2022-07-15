@@ -57,8 +57,8 @@ extension Publisher where Output == Data, Failure == NetworkError {
     func handleResponse<T: Decodable>(with decoder: JSONDecoder) -> AnyPublisher<T, NetworkError> {
         flatMap { data -> AnyPublisher<T, NetworkError> in
             do {
-                let response = try decoder.decode(APIResponse<T>.self, from: data)
-                return Just(response.data)
+                let response = try decoder.decode(T.self, from: data)
+                return Just(response)
                     .setFailureType(to: NetworkError.self)
                     .eraseToAnyPublisher()
             } catch {
@@ -70,7 +70,7 @@ extension Publisher where Output == Data, Failure == NetworkError {
                     )
                     .eraseToAnyPublisher()
                 }
-                let networkError = NetworkError.serializationError(message: error.localizedDescription)
+                let networkError = NetworkError.serializationError(message: "\(error)")
                 return Fail(outputType: T.self, failure: networkError).eraseToAnyPublisher()
             }
         }

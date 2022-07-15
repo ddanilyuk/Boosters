@@ -17,3 +17,9 @@ struct Fact {
 extension Fact: Decodable {
 
 }
+
+// MARK: - Equatable
+
+extension Fact: Equatable {
+
+}
