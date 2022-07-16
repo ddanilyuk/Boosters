@@ -41,6 +41,8 @@
 		5F71264D2881F455008CA35E /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71264C2881F455008CA35E /* Loadable.swift */; };
 		5F7126502882F24E008CA35E /* AnimalFactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71264F2882F24E008CA35E /* AnimalFactStore.swift */; };
 		5F7126522882F256008CA35E /* AnimalFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126512882F256008CA35E /* AnimalFactView.swift */; };
+		5F71265728833D24008CA35E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265628833D24008CA35E /* ActivityView.swift */; };
+		5F71265928833D39008CA35E /* ActivityShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265828833D39008CA35E /* ActivityShareItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		5F71264C2881F455008CA35E /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		5F71264F2882F24E008CA35E /* AnimalFactStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactStore.swift; sourceTree = "<group>"; };
 		5F7126512882F256008CA35E /* AnimalFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactView.swift; sourceTree = "<group>"; };
+		5F71265628833D24008CA35E /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		5F71265828833D39008CA35E /* ActivityShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityShareItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,8 +315,8 @@
 		5F7126492881F41E008CA35E /* SharedViews */ = {
 			isa = PBXGroup;
 			children = (
-				5F71264A2881F428008CA35E /* Loader.swift */,
-				5F71264C2881F455008CA35E /* Loadable.swift */,
+				5F71265428833D12008CA35E /* ActivityShare */,
+				5F71265328833D0C008CA35E /* Loader */,
 			);
 			path = SharedViews;
 			sourceTree = "<group>";
@@ -324,6 +328,24 @@
 				5F7126512882F256008CA35E /* AnimalFactView.swift */,
 			);
 			path = AnimalFactView;
+			sourceTree = "<group>";
+		};
+		5F71265328833D0C008CA35E /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				5F71264A2881F428008CA35E /* Loader.swift */,
+				5F71264C2881F455008CA35E /* Loadable.swift */,
+			);
+			path = Loader;
+			sourceTree = "<group>";
+		};
+		5F71265428833D12008CA35E /* ActivityShare */ = {
+			isa = PBXGroup;
+			children = (
+				5F71265628833D24008CA35E /* ActivityView.swift */,
+				5F71265828833D39008CA35E /* ActivityShareItem.swift */,
+			);
+			path = ActivityShare;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,6 +511,8 @@
 				5F7126232881AAA9008CA35E /* ContentType.swift in Sources */,
 				5F7126272881AAA9008CA35E /* NetworkError.swift in Sources */,
 				5F7126152881A824008CA35E /* AppStore.swift in Sources */,
+				5F71265928833D39008CA35E /* ActivityShareItem.swift in Sources */,
+				5F71265728833D24008CA35E /* ActivityView.swift in Sources */,
 				5F7126002881A681008CA35E /* NetworkService.swift in Sources */,
 				5F7126522882F256008CA35E /* AnimalFactView.swift in Sources */,
 			);

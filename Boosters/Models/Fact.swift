@@ -10,6 +10,15 @@ import Foundation
 struct Fact {
     let fact: String
     let image: String
+
+    var imageURL: URL? {
+        URL(string: image)
+    }
+
+    var imageCacheKey: String {
+        image + fact
+    }
+
 }
 
 // MARK: - Decodable

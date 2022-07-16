@@ -24,10 +24,7 @@ struct AnimalCellView: View {
                     KFImage.url(URL(string: viewStore.animal.image))
                         .resizable()
                         .fade(duration: 0.25)
-                        .placeholder { _ in
-                            ProgressView()
-                                .progressViewStyle(.circular)
-                        }
+                        .placeholder { ProgressView().progressViewStyle(.circular) }
                         .scaledToFill()
                         .frame(width: 90)
                         .frame(minHeight: 90)

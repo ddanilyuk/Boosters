@@ -16,33 +16,25 @@ struct AnimalFactView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             ZStack {
-                RoundedRectangle(cornerRadius: 32)
-                    .fill(.white)
-                    .shadow(
-                        color: .black.opacity(0.3),
-                        radius: 20, x: 0, y: 5
-                    )
+                backgroundView
 
-                VStack {
+                VStack(spacing: 12) {
                     GeometryReader { proxy in
-                        KFImage.url(URL(string: viewStore.fact.image))
-                            .resizable(resizingMode: .stretch)
-                            .loadDiskFileSynchronously()
+                        KFImage.url(viewStore.fact.imageURL, cacheKey: viewStore.fact.imageCacheKey)
+                            .resizable()
                             .diskCacheExpiration(.expired)
-                            .memoryCacheExpiration(.expired)
-                            .fade(duration: 0.25)
-                            .placeholder { _ in
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                            }
+                            .placeholder { ProgressView().progressViewStyle(.circular) }
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: 234)
                             .clipped()
-                            .cornerRadius(16)
+                            .cornerRadius(20)
+                            .overlay(alignment: .topTrailing) { shareMenu }
                     }
                     .frame(height: 234)
 
                     Text(viewStore.fact.fact)
+                        .lineLimit(nil)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                     Spacer()
 
@@ -71,10 +63,54 @@ struct AnimalFactView: View {
                         .opacity(viewStore.nextButtonVisible ? 1 : 0)
                     }
                 }
-                .padding(16)
+                .padding(12)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 70)
+        }
+    }
+
+    var backgroundView: some View {
+        RoundedRectangle(cornerRadius: 32)
+            .fill(.white)
+            .shadow(
+                color: .black.opacity(0.3),
+                radius: 20, x: 0, y: 5
+            )
+    }
+
+    var shareMenu: some View {
+        WithViewStore(store) { viewStore in
+            Menu(
+                content: {
+                    Button(
+                        action: { viewStore.send(.shareImageButtonTapped) },
+                        label: {
+                            Text("Image")
+                            Image(systemName: "photo")
+                        }
+                    )
+                    Button(
+                        action: { viewStore.send(.shareFactButtonTapped) },
+                        label: {
+                            Text("Fact")
+                            Image(systemName: "note.text")
+                        }
+                    )
+                },
+                label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.ultraThinMaterial)
+                            .padding(2)
+
+                        Image(systemName: "square.and.arrow.up")
+                            .tint(Color.black)
+                    }
+                    .frame(width: 44, height: 44)
+                    .padding(10)
+                }
+            )
         }
     }
 

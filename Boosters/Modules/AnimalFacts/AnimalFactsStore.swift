@@ -15,6 +15,7 @@ struct AnimalFacts {
     struct State: Equatable {
         var animal: Animal
         @BindableState var selectedFactId: Fact.ID
+        @BindableState var activityShareItem: ActivityShareItem?
 
         // TODO: Loaded image caching
         var animalFacts: IdentifiedArrayOf<AnimalFact.State> {
@@ -26,7 +27,7 @@ struct AnimalFacts {
                         AnimalFact.State(
                             fact: $1,
                             previousButtonVisible: $0 != 0,
-                            nextButtonVisible: $0 != facts.count
+                            nextButtonVisible: $0 != facts.count - 1
                         )
                     }
                 return IdentifiedArrayOf(uniqueElements: array)
@@ -71,21 +72,27 @@ struct AnimalFacts {
         case .onAppear:
             return .none
 
-        case let .animalFacts(id, action: .previousButtonTapped):
+        case let .animalFacts(id, action: .delegate(.previousFact)):
             // TODO: improve logic
             if let index = state.animalFacts.index(id: id) {
                 let newIndex = state.animalFacts.index(before: index)
                 state.selectedFactId = state.animalFacts[newIndex].id
             }
-
             return .none
 
-        case let .animalFacts(id, action: .nextButtonTapped):
+        case let .animalFacts(id, action: .delegate(.nextFact)):
             // TODO: improve logic
             if let index = state.animalFacts.index(id: id) {
                 let newIndex = state.animalFacts.index(after: index)
                 state.selectedFactId = state.animalFacts[newIndex].id
             }
+            return .none
+
+        case let .animalFacts(id, action: .delegate(.share(activityShareItem))):
+            state.activityShareItem = activityShareItem
+            return .none
+
+        case .animalFacts:
             return .none
 
         case .binding:

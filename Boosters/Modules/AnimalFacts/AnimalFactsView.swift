@@ -36,6 +36,10 @@ struct AnimalFactsView: View {
             }
             .background(Color(.systemGroupedBackground))
             .tabViewStyle(.page(indexDisplayMode: .never))
+            .sheet(
+                item: viewStore.binding(\.$activityShareItem),
+                content: ActivityView.init(activityShareItem:)
+            )
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(viewStore.animal.title)
         }
