@@ -45,7 +45,7 @@ extension AnimalsService {
     static var mock: Self {
         Self(
             getAnimals: {
-                Effect(value: [])
+                Effect(value: [.mock])
                     .delay(for: 1, scheduler: DispatchQueue.main)
                     .eraseToEffect()
             }

@@ -13,4 +13,5 @@ struct APIError: Decodable {
     struct Error: Decodable {
         let message: String
     }
+
 }

@@ -15,6 +15,7 @@ enum NetworkError: Error, Equatable {
 }
 
 extension NetworkError: CustomStringConvertible, LocalizedError {
+
     var description: String {
         switch self {
         case let .serializationError(message):
@@ -31,4 +32,5 @@ extension NetworkError: CustomStringConvertible, LocalizedError {
     var errorDescription: String? {
         description
     }
+
 }
