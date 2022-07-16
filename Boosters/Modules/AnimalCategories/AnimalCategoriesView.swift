@@ -8,7 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
 struct AnimalCategoriesView: View {
 
     let store: Store<AnimalCategories.State, AnimalCategories.Action>
@@ -22,11 +21,14 @@ struct AnimalCategoriesView: View {
                         content: AnimalCellView.init(store:)
                     )
                 }
+                .animation(.default, value: viewStore.cells)
                 .onAppear {
                     viewStore.send(.onAppear)
                 }
+                .redacted(reason: viewStore.isLoading && !viewStore.isLoaded ? .placeholder : [])
+                .loadable(viewStore.binding(\.$isLoading))
                 .alert(
-                    self.store.scope(state: \.alert),
+                    store.scope(state: \.alert),
                     dismiss: .dismissAlert
                 )
                 .navigationLink(

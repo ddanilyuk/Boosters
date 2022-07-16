@@ -37,6 +37,8 @@
 		5F7126432881C870008CA35E /* AnimalCellStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126422881C870008CA35E /* AnimalCellStore.swift */; };
 		5F7126462881D352008CA35E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7126452881D352008CA35E /* Kingfisher */; };
 		5F7126482881EE55008CA35E /* SwiftUI+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126472881EE55008CA35E /* SwiftUI+Navigation.swift */; };
+		5F71264B2881F428008CA35E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71264A2881F428008CA35E /* Loader.swift */; };
+		5F71264D2881F455008CA35E /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71264C2881F455008CA35E /* Loadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		5F71263F2881C850008CA35E /* AnimalCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCellView.swift; sourceTree = "<group>"; };
 		5F7126422881C870008CA35E /* AnimalCellStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCellStore.swift; sourceTree = "<group>"; };
 		5F7126472881EE55008CA35E /* SwiftUI+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Navigation.swift"; sourceTree = "<group>"; };
+		5F71264A2881F428008CA35E /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		5F71264C2881F455008CA35E /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 				5F7125FE2881A66C008CA35E /* Clients */,
 				5F7125FB2881A610008CA35E /* Modules */,
 				5F7125FC2881A62E008CA35E /* Models */,
+				5F7126492881F41E008CA35E /* SharedViews */,
 				5F7125FD2881A644008CA35E /* Extensions */,
 				5F7125D128819D86008CA35E /* Assets.xcassets */,
 				5F7125D328819D86008CA35E /* Preview Content */,
@@ -298,6 +303,15 @@
 			path = AnimalCell;
 			sourceTree = "<group>";
 		};
+		5F7126492881F41E008CA35E /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				5F71264A2881F428008CA35E /* Loader.swift */,
+				5F71264C2881F455008CA35E /* Loadable.swift */,
+			);
+			path = SharedViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -445,11 +459,13 @@
 				5F7126102881A7C9008CA35E /* AnimalCategoriesView.swift in Sources */,
 				5F7126042881A707008CA35E /* Animal.swift in Sources */,
 				5F7126062881A70C008CA35E /* Fact.swift in Sources */,
+				5F71264D2881F455008CA35E /* Loadable.swift in Sources */,
 				5F71263B2881C2FE008CA35E /* AppDelegate.swift in Sources */,
 				5F7126372881C287008CA35E /* APIError.swift in Sources */,
 				5F71261B2881A8EA008CA35E /* AnimalsService.swift in Sources */,
 				5F7125CE28819D84008CA35E /* BoostersApp.swift in Sources */,
 				5F71263C2881C2FE008CA35E /* AppDelegateStore.swift in Sources */,
+				5F71264B2881F428008CA35E /* Loader.swift in Sources */,
 				5F7126182881A82D008CA35E /* AppView.swift in Sources */,
 				5F7126482881EE55008CA35E /* SwiftUI+Navigation.swift in Sources */,
 				5F7126262881AAA9008CA35E /* HTTPMethod.swift in Sources */,
