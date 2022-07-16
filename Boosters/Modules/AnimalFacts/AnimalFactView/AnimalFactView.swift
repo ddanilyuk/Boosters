@@ -23,7 +23,14 @@ struct AnimalFactView: View {
                         KFImage.url(viewStore.fact.imageURL, cacheKey: viewStore.fact.imageCacheKey)
                             .resizable()
                             .diskCacheExpiration(.expired)
-                            .placeholder { ProgressView().progressViewStyle(.circular) }
+                            .placeholder {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(Color(.systemGroupedBackground))
+                                    
+                                    ProgressView().progressViewStyle(.circular)
+                                }
+                            }
                             .scaledToFill()
                             .frame(width: proxy.size.width, height: 234)
                             .clipped()
