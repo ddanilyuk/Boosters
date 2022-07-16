@@ -1,29 +1,31 @@
 //
-//  AnimalCellStore.swift
+//  AnimalFactStore.swift
 //  Boosters
 //
-//  Created by Denys Danyliuk on 15.07.2022.
+//  Created by Denys Danyliuk on 16.07.2022.
 //
 
 import ComposableArchitecture
-import CoreGraphics
 
-struct AnimalCell {
+struct AnimalFact {
 
     // MARK: - State
 
     struct State: Equatable, Identifiable {
-        let animal: Animal
+        let fact: Fact
+        var previousButtonVisible: Bool = false
+        var nextButtonVisible: Bool = true
 
-        var id: Animal.ID {
-            animal.id
+        var id: Fact.ID {
+            fact.id
         }
     }
 
     // MARK: - Action
 
     enum Action: Equatable {
-        case onTap
+        case previousButtonTapped
+        case nextButtonTapped
     }
 
     // MARK: - Environment
@@ -34,7 +36,10 @@ struct AnimalCell {
 
     static let reducer = Reducer<State, Action, Environment> { _, action, _ in
         switch action {
-        case .onTap:
+        case .previousButtonTapped:
+            return .none
+
+        case .nextButtonTapped:
             return .none
         }
     }

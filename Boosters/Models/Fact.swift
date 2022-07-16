@@ -18,6 +18,17 @@ extension Fact: Decodable {
 
 }
 
+
+// MARK: - Identifiable
+
+extension Fact: Identifiable {
+
+    var id: String {
+        fact
+    }
+
+}
+
 // MARK: - Equatable
 
 extension Fact: Equatable {

@@ -62,8 +62,10 @@ struct AnimalCategories {
         case let .getAnimalsResponse(.success(animals)):
             state.isLoading = false
             state.isLoaded = true
-            state.animals = animals
-            state.cells = IdentifiedArrayOf(uniqueElements: animals.map { AnimalCell.State(animal: $0) })
+            state.animals = animals.sorted()
+            state.cells = IdentifiedArrayOf(
+                uniqueElements: state.animals.map { AnimalCell.State(animal: $0) }
+            )
             return .none
 
         case let .getAnimalsResponse(.failure(networkError)):

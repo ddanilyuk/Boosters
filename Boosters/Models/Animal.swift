@@ -41,9 +41,14 @@ extension Animal: Decodable {
         description = try container.decode(String.self, forKey: .description)
         image = try container.decode(String.self, forKey: .image)
         order = try container.decode(Int.self, forKey: .order)
-        status = try container.decodeIfPresent(Status.self, forKey: .status) ?? .comingSoon
         content = try container.decodeIfPresent([Fact].self, forKey: .content)
+        if content?.isEmpty ?? true {
+            status = .comingSoon
+        } else {
+            status = try container.decode(Status.self, forKey: .status)
+        }
     }
+    
 }
 
 // MARK: - Equatable
@@ -51,6 +56,17 @@ extension Animal: Decodable {
 extension Animal: Equatable {
 
 }
+
+// MARK: - Comparable
+
+extension Animal: Comparable {
+
+    static func < (lhs: Animal, rhs: Animal) -> Bool {
+        lhs.order < rhs.order
+    }
+
+}
+
 
 // MARK: - Identifiable
 

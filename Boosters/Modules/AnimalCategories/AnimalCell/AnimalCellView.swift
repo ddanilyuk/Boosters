@@ -36,6 +36,7 @@ struct AnimalCellView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            .opacity(viewStore.animal.status == .comingSoon ? 0.5 : 1)
             .onTapGesture {
                 viewStore.send(.onTap)
             }

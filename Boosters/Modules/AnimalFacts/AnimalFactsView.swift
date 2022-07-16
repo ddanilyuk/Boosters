@@ -16,54 +16,28 @@ struct AnimalFactsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             GeometryReader { proxy in
-                TabView {
-                    ForEach(viewStore.animal.content ?? [], id: \.self) { fact in
-                        card(for: fact)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 70)
-                    }
+                TabView(selection: viewStore.binding(\.$selectedFactId)) {
+                    ForEachStore(
+                        store.scope(
+                            state: \AnimalFacts.State.animalFacts,
+                            action: AnimalFacts.Action.animalFacts
+                        ),
+                        content: { store in
+                            AnimalFactView(store: store)
+                                .tag(ViewStore(store).id)
+                        }
+                    )
                     .frame(
                         width: proxy.size.width,
                         height: proxy.size.height
                     )
                 }
+                .animation(.default, value: viewStore.selectedFactId)
             }
+            .background(Color.purple.opacity(0.8))
             .tabViewStyle(.page(indexDisplayMode: .never))
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(viewStore.animal.title)
-        }
-    }
-
-    func card(for fact: Fact) -> some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(.purple.opacity(0.8))
-
-            VStack {
-                KFImage.url(URL(string: fact.image))
-                    .resizable()
-                    .loadDiskFileSynchronously()
-                    .diskCacheExpiration(.expired)
-                    .fade(duration: 0.25)
-                    .placeholder { _ in
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                    }
-                    .scaledToFill()
-                    .frame(height: 234)
-                    .clipped()
-
-                Text(fact.fact)
-
-                Spacer()
-
-                HStack {
-                    Text("Prev")
-                    Spacer()
-                    Text("Next")
-                }
-            }
-            .padding()
         }
     }
 
