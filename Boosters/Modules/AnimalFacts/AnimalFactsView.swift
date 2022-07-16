@@ -34,7 +34,7 @@ struct AnimalFactsView: View {
                 }
                 .animation(.default, value: viewStore.selectedFactId)
             }
-            .background(Color.purple.opacity(0.8))
+            .background(Color(.systemGroupedBackground))
             .tabViewStyle(.page(indexDisplayMode: .never))
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(viewStore.animal.title)

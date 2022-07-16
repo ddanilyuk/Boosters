@@ -15,34 +15,78 @@ struct AnimalCellView: View {
 
     var body: some View {
         WithViewStore(store) { viewStore in
-            HStack(spacing: 16) {
-                KFImage.url(URL(string: viewStore.animal.image))
-                    .resizable()
-                    .fade(duration: 0.25)
-                    .placeholder { _ in
-                        ProgressView()
-                            .progressViewStyle(.circular)
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.white)
+                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+
+                HStack(spacing: 0) {
+                    KFImage.url(URL(string: viewStore.animal.image))
+                        .resizable()
+                        .fade(duration: 0.25)
+                        .placeholder { _ in
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }
+                        .scaledToFill()
+                        .frame(width: 90)
+                        .frame(minHeight: 90)
+                        .clipped()
+                        .cornerRadius(6)
+                        .padding(6)
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(viewStore.animal.title)
+                            .font(.headline)
+
+                        Text(viewStore.animal.description)
+                            .font(.callout)
+                            .foregroundColor(.secondary)
+
+                        Spacer()
+
+                        statusView(viewStore.animal.status)
                     }
-                    .scaledToFill()
-                    .frame(width: 90, height: 90)
-                    .clipped()
+                    .padding(6)
 
-                VStack(alignment: .leading) {
-                    Text(viewStore.animal.title)
-                        .font(.headline)
-
-                    Text(viewStore.animal.description)
-                        .font(.callout)
-                        .foregroundColor(.secondary)
+                    Spacer()
                 }
             }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
             .opacity(viewStore.animal.status == .comingSoon ? 0.5 : 1)
             .onTapGesture {
                 viewStore.send(.onTap)
             }
+            .background(Color(.systemGroupedBackground))
         }
     }
 
+    @ViewBuilder
+    func statusView(_ status: Animal.Status) -> some View {
+        switch status {
+        case .free:
+            Text("Free")
+                .foregroundColor(.green)
+                .font(.callout.bold())
+
+        case .paid:
+            HStack {
+                Image(systemName: "lock")
+
+                Text("Premium")
+
+                Spacer()
+            }
+            .foregroundColor(.blue)
+            .font(.callout.bold())
+
+        case .comingSoon:
+            Text("Coming soon...")
+                .foregroundColor(.purple)
+                .font(.callout.bold())
+        }
+    }
 }
 
 // MARK: - Preview

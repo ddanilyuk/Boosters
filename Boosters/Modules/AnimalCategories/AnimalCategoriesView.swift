@@ -20,8 +20,10 @@ struct AnimalCategoriesView: View {
                         store.scope(state: \.cells, action: AnimalCategories.Action.cells),
                         content: AnimalCellView.init(store:)
                     )
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
-                .animation(.default, value: viewStore.cells)
+                .listStyle(.plain)
                 .onAppear {
                     viewStore.send(.onAppear)
                 }
@@ -44,6 +46,8 @@ struct AnimalCategoriesView: View {
                     }
                 )
                 .navigationTitle("Animals")
+                .navigationBarTitleDisplayMode(.inline)
+                .background(Color(.systemGroupedBackground))
             }
         }
     }
