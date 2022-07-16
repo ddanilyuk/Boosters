@@ -39,15 +39,18 @@ struct App {
     struct Environment {
         let networkService: NetworkService
         let animalsService: AnimalsService
+        let kingfisherService: KingfisherService
 
         static var live: Self {
             let baseURL = URL(string: "https://drive.google.com")!
             let networkService: NetworkService = .live(baseURL: baseURL)
             let animalsService: AnimalsService = .live(networkService: networkService)
+            let kingfisherService: KingfisherService = .live()
 
             return Self(
                 networkService: networkService,
-                animalsService: animalsService
+                animalsService: animalsService,
+                kingfisherService: kingfisherService
             )
         }
     }
@@ -97,7 +100,8 @@ extension App.Environment {
 
     var animalsList: AnimalsList.Environment {
         AnimalsList.Environment(
-            animalsService: animalsService
+            animalsService: animalsService,
+            kingfisherService: kingfisherService
         )
     }
 

@@ -13,13 +13,27 @@ struct AnimalFact {
     // MARK: - State
 
     struct State: Equatable, Identifiable {
-        let fact: Fact
-        var previousButtonVisible: Bool = false
-        var nextButtonVisible: Bool = true
 
-        var id: Fact.ID {
-            fact.id
+        let id: String
+        let imageURL: URL?
+        let imageCacheKey: String
+        let text: String
+        let previousButtonVisible: Bool
+        let nextButtonVisible: Bool
+
+        init(
+            fact: Fact,
+            previousButtonVisible: Bool,
+            nextButtonVisible: Bool
+        ) {
+            id = fact.id
+            imageURL = fact.imageURL
+            imageCacheKey = fact.imageCacheKey
+            text = fact.fact
+            self.previousButtonVisible = previousButtonVisible
+            self.nextButtonVisible = nextButtonVisible
         }
+
     }
 
     // MARK: - Action
@@ -28,7 +42,7 @@ struct AnimalFact {
         case previousButtonTapped
         case nextButtonTapped
         case shareImageButtonTapped
-        case shareFactButtonTapped
+        case shareTextButtonTapped
 
         case delegate(Delegate)
         case binding(BindingAction<State>)
@@ -42,11 +56,13 @@ struct AnimalFact {
 
     // MARK: - Environment
 
-    struct Environment { }
+    struct Environment {
+        let kingfisherService: KingfisherService
+    }
 
     // MARK: - Reducer
 
-    static let reducer = Reducer<State, Action, Environment> { state, action, _ in
+    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
         case .previousButtonTapped:
             return Effect(value: .delegate(.previousFact))
@@ -55,19 +71,17 @@ struct AnimalFact {
             return Effect(value: .delegate(.nextFact))
 
         case .shareImageButtonTapped:
-            let key = state.fact.image + state.fact.fact
-            // TODO: Use ImageCache from env
-            guard let image = ImageCache.default.retrieveImageInMemoryCache(forKey: key) else {
+            let imageCache = environment.kingfisherService.imageCache
+            guard let image = imageCache.retrieveImageInMemoryCache(forKey: state.imageCacheKey) else {
                 return .none
             }
-            return Effect(value: .delegate(
-                .share(ActivityShareItem(values: [image]))
-            ))
+            let shareItem = ActivityShareItem(values: [image])
 
-        case .shareFactButtonTapped:
-            return Effect(value: .delegate(
-                .share(ActivityShareItem(values: [state.fact.fact]))
-            ))
+            return Effect(value: .delegate(.share(shareItem)))
+
+        case .shareTextButtonTapped:
+            let shareItem = ActivityShareItem(values: [state.text])
+            return Effect(value: .delegate(.share(shareItem)))
 
         case .delegate:
             return .none

@@ -45,6 +45,8 @@ struct AnimalsList {
         case showAd(animal: Animal)
         case openDetails(animal: Animal)
 
+        case selectedAnimalFacts(AnimalFacts.Action)
+
         case dismissAlert
         case binding(BindingAction<State>)
     }
@@ -53,11 +55,25 @@ struct AnimalsList {
 
     struct Environment {
         let animalsService: AnimalsService
+        let kingfisherService: KingfisherService
     }
 
     // MARK: - Reducer
 
-    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
+    static let reducer = Reducer<State, Action, Environment>.combine(
+        AnimalFacts.reducer
+            .optional()
+            .pullback(
+                state: \State.selectedAnimalFacts,
+                action: /Action.selectedAnimalFacts,
+                environment: {
+                    AnimalFacts.Environment(kingfisherService: $0.kingfisherService)
+                }
+            ),
+        coreReducer
+    )
+
+    static private let coreReducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
         case .onAppear:
             guard !state.isLoaded else {
@@ -130,6 +146,9 @@ struct AnimalsList {
             return .none
 
         case .animalsCells:
+            return .none
+
+        case .selectedAnimalFacts:
             return .none
 
         case .binding:

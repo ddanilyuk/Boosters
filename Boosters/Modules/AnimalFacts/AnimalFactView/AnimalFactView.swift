@@ -20,14 +20,14 @@ struct AnimalFactView: View {
 
                 VStack(spacing: 12) {
                     GeometryReader { proxy in
-                        KFImage.url(viewStore.fact.imageURL, cacheKey: viewStore.fact.imageCacheKey)
+                        KFImage.url(viewStore.imageURL, cacheKey: viewStore.imageCacheKey)
                             .resizable()
                             .diskCacheExpiration(.expired)
                             .placeholder {
                                 ZStack {
                                     Rectangle()
                                         .fill(Color(.systemGroupedBackground))
-                                    
+
                                     ProgressView().progressViewStyle(.circular)
                                 }
                             }
@@ -39,7 +39,7 @@ struct AnimalFactView: View {
                     }
                     .frame(height: 234)
 
-                    Text(viewStore.fact.fact)
+                    Text(viewStore.text)
                         .lineLimit(nil)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -98,7 +98,7 @@ struct AnimalFactView: View {
                         }
                     )
                     Button(
-                        action: { viewStore.send(.shareFactButtonTapped) },
+                        action: { viewStore.send(.shareTextButtonTapped) },
                         label: {
                             Text("Fact")
                             Image(systemName: "note.text")
@@ -126,15 +126,21 @@ struct AnimalFactView: View {
 // MARK: - Preview
 
 struct AnimalFactView_Previews: PreviewProvider {
+
     static var previews: some View {
         NavigationView {
             AnimalFactView(
                 store: Store(
-                    initialState: AnimalFact.State(fact: Animal.mock.content![0]),
+                    initialState: AnimalFact.State(
+                        fact: Animal.mock.content![0],
+                        previousButtonVisible: true,
+                        nextButtonVisible: true
+                    ),
                     reducer: AnimalFact.reducer,
-                    environment: AnimalFact.Environment()
+                    environment: AnimalFact.Environment(kingfisherService: .mock)
                 )
             )
         }
     }
+    
 }

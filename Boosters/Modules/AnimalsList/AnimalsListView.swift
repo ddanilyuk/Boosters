@@ -38,10 +38,9 @@ struct AnimalsListView: View {
                     unwrapping: viewStore.binding(\.$selectedAnimalFacts),
                     destination: { value in
                         AnimalFactsView(
-                            store: Store(
-                                initialState: value,
-                                reducer: AnimalFacts.reducer,
-                                environment: .init()
+                            store: store.scope(
+                                state: { _ in value },
+                                action: AnimalsList.Action.selectedAnimalFacts
                             )
                         )
                     }
@@ -66,7 +65,8 @@ struct AnimalCategoriesView_Previews: PreviewProvider {
                     initialState: AnimalsList.State(),
                     reducer: AnimalsList.reducer,
                     environment: AnimalsList.Environment(
-                        animalsService: .mock
+                        animalsService: .mock,
+                        kingfisherService: .mock
                     )
                 )
             )

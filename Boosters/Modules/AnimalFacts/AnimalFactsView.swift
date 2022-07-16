@@ -16,7 +16,7 @@ struct AnimalFactsView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             GeometryReader { proxy in
-                TabView(selection: viewStore.binding(\.$selectedFactId)) {
+                TabView(selection: viewStore.binding(\.$selectedFactID)) {
                     ForEachStore(
                         store.scope(
                             state: \AnimalFacts.State.animalFacts,
@@ -27,21 +27,17 @@ struct AnimalFactsView: View {
                                 .tag(ViewStore(store).id)
                         }
                     )
-                    .frame(
-                        width: proxy.size.width,
-                        height: proxy.size.height
-                    )
                 }
-                .animation(.default, value: viewStore.selectedFactId)
+                .animation(.default, value: viewStore.selectedFactID)
             }
-            .background(Color(.systemGroupedBackground))
             .tabViewStyle(.page(indexDisplayMode: .never))
             .sheet(
                 item: viewStore.binding(\.$activityShareItem),
                 content: ActivityView.init(activityShareItem:)
             )
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(viewStore.animal.title)
+            .navigationTitle(viewStore.title)
+            .background(Color(.systemGroupedBackground))
         }
     }
 
@@ -50,15 +46,19 @@ struct AnimalFactsView: View {
 // MARK: - Preview
 
 struct AnimalFactsView_Previews: PreviewProvider {
+
     static var previews: some View {
         NavigationView {
             AnimalFactsView(
                 store: Store(
                     initialState: AnimalFacts.State(animal: .mock),
                     reducer: AnimalFacts.reducer,
-                    environment: AnimalFacts.Environment()
+                    environment: AnimalFacts.Environment(
+                        kingfisherService: .mock
+                    )
                 )
             )
         }
     }
+    
 }

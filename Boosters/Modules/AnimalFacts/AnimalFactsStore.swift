@@ -13,31 +13,29 @@ struct AnimalFacts {
     // MARK: - State
 
     struct State: Equatable {
-        var animal: Animal
-        @BindableState var selectedFactId: Fact.ID
+        let title: String
+        var facts: IdentifiedArrayOf<Fact>
+        var animalFacts: IdentifiedArrayOf<AnimalFact.State>
+
+        @BindableState var selectedFactID: Fact.ID
         @BindableState var activityShareItem: ActivityShareItem?
 
-        // TODO: Loaded image caching
-        var animalFacts: IdentifiedArrayOf<AnimalFact.State> {
-            get {
-                let facts = animal.content ?? []
-                let array = facts
+        init(animal: Animal) {
+            let animalContent = animal.content ?? []
+            title = animal.title
+            facts = IdentifiedArrayOf(uniqueElements: animalContent)
+            selectedFactID = animal.content?.first?.id ?? Fact.ID()
+            animalFacts = IdentifiedArrayOf(
+                uniqueElements: animalContent
                     .enumerated()
                     .map {
                         AnimalFact.State(
                             fact: $1,
                             previousButtonVisible: $0 != 0,
-                            nextButtonVisible: $0 != facts.count - 1
+                            nextButtonVisible: $0 != animalContent.count - 1
                         )
                     }
-                return IdentifiedArrayOf(uniqueElements: array)
-            }
-            set { }
-        }
-
-        init(animal: Animal) {
-            self.animal = animal
-            self.selectedFactId = animal.content?.first?.id ?? Fact.ID()
+            )
         }
     }
 
@@ -51,7 +49,9 @@ struct AnimalFacts {
 
     // MARK: - Environment
 
-    struct Environment { }
+    struct Environment {
+        let kingfisherService: KingfisherService
+    }
 
     // MARK: - Reducer
 
@@ -60,32 +60,34 @@ struct AnimalFacts {
             .forEach(
                 state: \State.animalFacts,
                 action: /Action.animalFacts,
-                environment: { _ in
-                    AnimalFact.Environment()
+                environment: {
+                    AnimalFact.Environment(
+                        kingfisherService: $0.kingfisherService
+                    )
                 }
             ),
         coreReducer
     )
 
-    static let coreReducer = Reducer<State, Action, Environment> { state, action, _ in
+    static private let coreReducer = Reducer<State, Action, Environment> { state, action, _ in
         switch action {
         case .onAppear:
             return .none
 
         case let .animalFacts(id, action: .delegate(.previousFact)):
-            // TODO: improve logic
-            if let index = state.animalFacts.index(id: id) {
-                let newIndex = state.animalFacts.index(before: index)
-                state.selectedFactId = state.animalFacts[newIndex].id
+            guard let currentIndex = state.animalFacts.index(id: id) else {
+                return .none
             }
+            let newIndex = state.animalFacts.index(before: currentIndex)
+            state.selectedFactID = state.animalFacts[newIndex].id
             return .none
 
         case let .animalFacts(id, action: .delegate(.nextFact)):
-            // TODO: improve logic
-            if let index = state.animalFacts.index(id: id) {
-                let newIndex = state.animalFacts.index(after: index)
-                state.selectedFactId = state.animalFacts[newIndex].id
+            guard let currentIndex = state.animalFacts.index(id: id) else {
+                return .none
             }
+            let newIndex = state.animalFacts.index(after: currentIndex)
+            state.selectedFactID = state.animalFacts[newIndex].id
             return .none
 
         case let .animalFacts(id, action: .delegate(.share(activityShareItem))):

@@ -43,6 +43,7 @@
 		5F7126522882F256008CA35E /* AnimalFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126512882F256008CA35E /* AnimalFactView.swift */; };
 		5F71265728833D24008CA35E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265628833D24008CA35E /* ActivityView.swift */; };
 		5F71265928833D39008CA35E /* ActivityShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265828833D39008CA35E /* ActivityShareItem.swift */; };
+		5F71265D28834B27008CA35E /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265C28834B27008CA35E /* KingfisherService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		5F7126512882F256008CA35E /* AnimalFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactView.swift; sourceTree = "<group>"; };
 		5F71265628833D24008CA35E /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		5F71265828833D39008CA35E /* ActivityShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityShareItem.swift; sourceTree = "<group>"; };
+		5F71265C28834B27008CA35E /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 			children = (
 				5F71261C2881AA98008CA35E /* NetworkService */,
 				5F7126322881C1D9008CA35E /* AnimalsService */,
+				5F71265B28834B17008CA35E /* KingfisherService */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -346,6 +349,14 @@
 				5F71265828833D39008CA35E /* ActivityShareItem.swift */,
 			);
 			path = ActivityShare;
+			sourceTree = "<group>";
+		};
+		5F71265B28834B17008CA35E /* KingfisherService */ = {
+			isa = PBXGroup;
+			children = (
+				5F71265C28834B27008CA35E /* KingfisherService.swift */,
+			);
+			path = KingfisherService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,6 +522,7 @@
 				5F7126232881AAA9008CA35E /* ContentType.swift in Sources */,
 				5F7126272881AAA9008CA35E /* NetworkError.swift in Sources */,
 				5F7126152881A824008CA35E /* AppStore.swift in Sources */,
+				5F71265D28834B27008CA35E /* KingfisherService.swift in Sources */,
 				5F71265928833D39008CA35E /* ActivityShareItem.swift in Sources */,
 				5F71265728833D24008CA35E /* ActivityView.swift in Sources */,
 				5F7126002881A681008CA35E /* NetworkService.swift in Sources */,
