@@ -23,3 +23,9 @@ extension Fact: Decodable {
 extension Fact: Equatable {
 
 }
+
+// MARK: - Hashable
+
+extension Fact: Hashable {
+
+}
