@@ -1,5 +1,5 @@
 //
-//  AnimalCategoriesStore.swift
+//  AnimalsList.swift
 //  Boosters
 //
 //  Created by Denys Danyliuk on 15.07.2022.
@@ -8,26 +8,40 @@
 import ComposableArchitecture
 import IdentifiedCollections
 
-struct AnimalCategories {
+struct AnimalsList {
 
     // MARK: - State
 
     struct State: Equatable {
-        var animals: [Animal] = [.mock]
-        var cells: IdentifiedArrayOf<AnimalCell.State> = [.init(animal: .mock)]
-        var isLoaded = false
+        var animals: IdentifiedArrayOf<Animal>
+        var animalsCells: IdentifiedArrayOf<AnimalCell.State>
 
-        @BindableState var factScreen: AnimalFacts.State?
+        var isLoaded = false
         @BindableState var isLoading = false
+
+        @BindableState var selectedAnimalFacts: AnimalFacts.State?
         var alert: AlertState<Action>?
+
+        var isRedacted: Bool {
+            isLoading && !isLoaded
+        }
+
+        init() {
+            let redactedAnimals = [Animal.redacted1, .redacted2]
+            animals = IdentifiedArrayOf(uniqueElements: redactedAnimals)
+            animalsCells = IdentifiedArrayOf(
+                uniqueElements: redactedAnimals.map { AnimalCell.State(animal: $0) }
+            )
+        }
     }
 
     // MARK: - Action
 
     enum Action: Equatable, BindableAction {
         case onAppear
+
         case getAnimalsResponse(Result<[Animal], NetworkError>)
-        case cells(id: Animal.ID, action: AnimalCell.Action)
+        case animalsCells(id: Animal.ID, action: AnimalCell.Action)
         case showAd(animal: Animal)
         case openDetails(animal: Animal)
 
@@ -43,11 +57,7 @@ struct AnimalCategories {
 
     // MARK: - Reducer
 
-    static let reducer = Reducer<State, Action, Environment>.combine(
-        reducerCore
-    )
-
-    static let reducerCore = Reducer<State, Action, Environment> { state, action, environment in
+    static let reducer = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
         case .onAppear:
             guard !state.isLoaded else {
@@ -62,8 +72,8 @@ struct AnimalCategories {
         case let .getAnimalsResponse(.success(animals)):
             state.isLoading = false
             state.isLoaded = true
-            state.animals = animals.sorted()
-            state.cells = IdentifiedArrayOf(
+            state.animals = IdentifiedArrayOf(uniqueElements: animals.sorted())
+            state.animalsCells = IdentifiedArrayOf(
                 uniqueElements: state.animals.map { AnimalCell.State(animal: $0) }
             )
             return .none
@@ -77,20 +87,20 @@ struct AnimalCategories {
             )
             return .none
 
-        case let .cells(id, .onTap):
-            guard let item = state.cells[id: id] else {
+        case let .animalsCells(id, .onTap):
+            guard let animal = state.animals[id: id] else {
                 return .none
             }
-            switch item.animal.status {
+            switch animal.status {
             case .free:
-                return Effect(value: .openDetails(animal: item.animal))
+                return Effect(value: .openDetails(animal: animal))
 
             case .paid:
                 state.alert = AlertState(
                     title: TextState("Watch Ad to continue"),
                     primaryButton: .default(
                         TextState("Show Ad"),
-                        action: .send(.showAd(animal: item.animal))
+                        action: .send(.showAd(animal: animal))
                     ),
                     secondaryButton: .cancel(TextState("Cancel"))
                 )
@@ -112,14 +122,14 @@ struct AnimalCategories {
 
         case let .openDetails(animal):
             state.isLoading = false
-            state.factScreen = .init(animal: animal)
+            state.selectedAnimalFacts = AnimalFacts.State(animal: animal)
             return .none
 
         case .dismissAlert:
             state.alert = nil
             return .none
 
-        case .cells:
+        case .animalsCells:
             return .none
 
         case .binding:

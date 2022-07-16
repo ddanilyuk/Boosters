@@ -15,8 +15,11 @@ struct AppView: View {
     var body: some View {
         Group {
             IfLetStore(
-                store.scope(state: \App.State.animalCategories, action: App.Action.animalCategories),
-                then: AnimalCategoriesView.init
+                store.scope(
+                    state: \App.State.animalsList,
+                    action: App.Action.animalsList
+                ),
+                then: AnimalsListView.init
             )
         }
     }

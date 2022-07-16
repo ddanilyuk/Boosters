@@ -1,5 +1,5 @@
 //
-//  AnimalCategoriesView.swift
+//  AnimalsListView.swift
 //  Boosters
 //
 //  Created by Denys Danyliuk on 15.07.2022.
@@ -8,33 +8,34 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AnimalCategoriesView: View {
+struct AnimalsListView: View {
 
-    let store: Store<AnimalCategories.State, AnimalCategories.Action>
+    let store: Store<AnimalsList.State, AnimalsList.Action>
 
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
                 List {
                     ForEachStore(
-                        store.scope(state: \.cells, action: AnimalCategories.Action.cells),
+                        store.scope(
+                            state: \AnimalsList.State.animalsCells,
+                            action: AnimalsList.Action.animalsCells
+                        ),
                         content: AnimalCellView.init(store:)
                     )
                     .listRowSeparator(.hidden)
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
                 .listStyle(.plain)
-                .onAppear {
-                    viewStore.send(.onAppear)
-                }
-                .redacted(reason: viewStore.isLoading && !viewStore.isLoaded ? .placeholder : [])
+                .onAppear { viewStore.send(.onAppear) }
+                .redacted(reason: viewStore.isRedacted ? .placeholder : [])
                 .loadable(viewStore.binding(\.$isLoading))
                 .alert(
                     store.scope(state: \.alert),
                     dismiss: .dismissAlert
                 )
                 .navigationLink(
-                    unwrapping: viewStore.binding(\.$factScreen),
+                    unwrapping: viewStore.binding(\.$selectedAnimalFacts),
                     destination: { value in
                         AnimalFactsView(
                             store: Store(
@@ -57,17 +58,19 @@ struct AnimalCategoriesView: View {
 // MARK: - Preview
 
 struct AnimalCategoriesView_Previews: PreviewProvider {
+
     static var previews: some View {
         NavigationView {
-            AnimalCategoriesView(
+            AnimalsListView(
                 store: Store(
-                    initialState: AnimalCategories.State(),
-                    reducer: AnimalCategories.reducer,
-                    environment: AnimalCategories.Environment(
+                    initialState: AnimalsList.State(),
+                    reducer: AnimalsList.reducer,
+                    environment: AnimalsList.Environment(
                         animalsService: .mock
                     )
                 )
             )
         }
     }
+
 }

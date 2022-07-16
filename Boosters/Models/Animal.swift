@@ -94,4 +94,22 @@ extension Animal {
         ]
     )
 
+    static var redacted1 = Animal(
+        title: String(repeating: " ", count: 10),
+        description: String(repeating: " ", count: 15),
+        image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/WelshCorgi.jpeg",
+        order: 1,
+        status: .free,
+        content: [ ]
+    )
+
+    static var redacted2 = Animal(
+        title: String(repeating: " ", count: 5),
+        description: String(repeating: " ", count: 35),
+        image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/WelshCorgi.jpeg",
+        order: 2,
+        status: .paid,
+        content: [ ]
+    )
+
 }

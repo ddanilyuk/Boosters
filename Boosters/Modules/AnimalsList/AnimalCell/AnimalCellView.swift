@@ -21,7 +21,7 @@ struct AnimalCellView: View {
                     .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
 
                 HStack(spacing: 0) {
-                    KFImage.url(URL(string: viewStore.animal.image))
+                    KFImage.url(URL(string: viewStore.image))
                         .resizable()
                         .fade(duration: 0.25)
                         .placeholder { ProgressView().progressViewStyle(.circular) }
@@ -33,16 +33,16 @@ struct AnimalCellView: View {
                         .padding(6)
 
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(viewStore.animal.title)
+                        Text(viewStore.title)
                             .font(.headline)
 
-                        Text(viewStore.animal.description)
+                        Text(viewStore.description)
                             .font(.callout)
                             .foregroundColor(.secondary)
 
                         Spacer()
 
-                        statusView(viewStore.animal.status)
+                        statusView(viewStore.status)
                     }
                     .padding(6)
 
@@ -51,16 +51,14 @@ struct AnimalCellView: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
-            .opacity(viewStore.animal.status == .comingSoon ? 0.5 : 1)
-            .onTapGesture {
-                viewStore.send(.onTap)
-            }
+            .opacity(viewStore.status == .comingSoon ? 0.5 : 1)
+            .onTapGesture { viewStore.send(.onTap) }
             .background(Color(.systemGroupedBackground))
         }
     }
 
     @ViewBuilder
-    func statusView(_ status: Animal.Status) -> some View {
+    func statusView(_ status: AnimalCell.State.Status) -> some View {
         switch status {
         case .free:
             Text("Free")
@@ -89,6 +87,7 @@ struct AnimalCellView: View {
 // MARK: - Preview
 
 struct AnimalCellView_Previews: PreviewProvider {
+
     static var previews: some View {
         AnimalCellView(
             store: Store(
@@ -101,4 +100,5 @@ struct AnimalCellView_Previews: PreviewProvider {
         .fixedSize(horizontal: false, vertical: true)
         .frame(width: 385)
     }
+    
 }

@@ -13,17 +13,17 @@ struct App {
 
     struct State: Equatable {
         var appDelegate: AppDelegate.State = AppDelegate.State()
-        var animalCategories: AnimalCategories.State?
+        var animalsList: AnimalsList.State?
 
         mutating func set(_ currentState: CurrentState) {
             switch currentState {
-            case .animalCategories:
-                self.animalCategories = AnimalCategories.State()
+            case .animalsList:
+                self.animalsList = AnimalsList.State()
             }
         }
 
         enum CurrentState {
-            case animalCategories
+            case animalsList
         }
     }
 
@@ -31,7 +31,7 @@ struct App {
 
     enum Action: Equatable {
         case appDelegate(AppDelegate.Action)
-        case animalCategories(AnimalCategories.Action)
+        case animalsList(AnimalsList.Action)
     }
 
     // MARK: - Environment
@@ -57,13 +57,13 @@ struct App {
     static var reducerCore = Reducer<State, Action, Environment> { state, action, environment in
         switch action {
         case .appDelegate(.didFinishLaunching):
-            state.set(.animalCategories)
+            state.set(.animalsList)
             return .none
 
         case .appDelegate:
             return .none
 
-        case .animalCategories:
+        case .animalsList:
             return .none
         }
     }
@@ -75,12 +75,12 @@ struct App {
                 action: /Action.appDelegate,
                 environment: { $0.appDelegate }
             ),
-        AnimalCategories.reducer
+        AnimalsList.reducer
             .optional()
             .pullback(
-                state: \State.animalCategories,
-                action: /Action.animalCategories,
-                environment: { $0.animalCategories }
+                state: \State.animalsList,
+                action: /Action.animalsList,
+                environment: { $0.animalsList }
             ),
         reducerCore
     )
@@ -95,8 +95,8 @@ extension App.Environment {
         AppDelegate.Environment()
     }
 
-    var animalCategories: AnimalCategories.Environment {
-        AnimalCategories.Environment(
+    var animalsList: AnimalsList.Environment {
+        AnimalsList.Environment(
             animalsService: animalsService
         )
     }
