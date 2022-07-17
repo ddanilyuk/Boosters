@@ -54,6 +54,7 @@ struct AnimalsList {
     // MARK: - Environment
 
     struct Environment {
+        let mainQueue: AnySchedulerOf<DispatchQueue>
         let animalsService: AnimalsService
         let kingfisherService: KingfisherService
     }
@@ -82,7 +83,7 @@ struct AnimalsList {
             state.isLoading = true
             return environment.animalsService
                 .getAnimals()
-                .receive(on: DispatchQueue.main)
+                .receive(on: environment.mainQueue)
                 .catchToEffect(Action.getAnimalsResponse)
 
         case let .getAnimalsResponse(.success(animals)):
@@ -133,7 +134,7 @@ struct AnimalsList {
         case let .showAd(animal):
             state.isLoading = true
             return Effect(value: .openDetails(animal: animal))
-                .delay(for: 2, scheduler: DispatchQueue.main)
+                .delay(for: 2, scheduler: environment.mainQueue)
                 .eraseToEffect()
 
         case let .openDetails(animal):

@@ -10,7 +10,6 @@
 		5F7125CE28819D84008CA35E /* BoostersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125CD28819D84008CA35E /* BoostersApp.swift */; };
 		5F7125D228819D86008CA35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7125D128819D86008CA35E /* Assets.xcassets */; };
 		5F7125D528819D86008CA35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7125D428819D86008CA35E /* Preview Assets.xcassets */; };
-		5F7125DF28819D86008CA35E /* BoostersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125DE28819D86008CA35E /* BoostersTests.swift */; };
 		5F7125E928819D86008CA35E /* BoostersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125E828819D86008CA35E /* BoostersUITests.swift */; };
 		5F7125EB28819D86008CA35E /* BoostersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125EA28819D86008CA35E /* BoostersUITestsLaunchTests.swift */; };
 		5F7125F92881A5F9008CA35E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7125F82881A5F9008CA35E /* ComposableArchitecture */; };
@@ -43,6 +42,9 @@
 		5F71265728833D24008CA35E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265628833D24008CA35E /* ActivityView.swift */; };
 		5F71265928833D39008CA35E /* ActivityShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265828833D39008CA35E /* ActivityShareItem.swift */; };
 		5F71265D28834B27008CA35E /* KingfisherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71265C28834B27008CA35E /* KingfisherService.swift */; };
+		5F7126ED288435AC008CA35E /* AnimalFactTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126EC288435AC008CA35E /* AnimalFactTests.swift */; };
+		5F7126EF288435BA008CA35E /* AnimalFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126EE288435BA008CA35E /* AnimalFactsTests.swift */; };
+		5F7126F12884361A008CA35E /* AnimalsListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126F02884361A008CA35E /* AnimalsListTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +70,6 @@
 		5F7125D128819D86008CA35E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F7125D428819D86008CA35E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F7125DA28819D86008CA35E /* BoostersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoostersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F7125DE28819D86008CA35E /* BoostersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostersTests.swift; sourceTree = "<group>"; };
 		5F7125E428819D86008CA35E /* BoostersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoostersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7125E828819D86008CA35E /* BoostersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostersUITests.swift; sourceTree = "<group>"; };
 		5F7125EA28819D86008CA35E /* BoostersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostersUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -100,6 +101,9 @@
 		5F71265628833D24008CA35E /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		5F71265828833D39008CA35E /* ActivityShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityShareItem.swift; sourceTree = "<group>"; };
 		5F71265C28834B27008CA35E /* KingfisherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherService.swift; sourceTree = "<group>"; };
+		5F7126EC288435AC008CA35E /* AnimalFactTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactTests.swift; sourceTree = "<group>"; };
+		5F7126EE288435BA008CA35E /* AnimalFactsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactsTests.swift; sourceTree = "<group>"; };
+		5F7126F02884361A008CA35E /* AnimalsListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsListTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +178,9 @@
 		5F7125DD28819D86008CA35E /* BoostersTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F7125DE28819D86008CA35E /* BoostersTests.swift */,
+				5F7126F02884361A008CA35E /* AnimalsListTests.swift */,
+				5F7126EE288435BA008CA35E /* AnimalFactsTests.swift */,
+				5F7126EC288435AC008CA35E /* AnimalFactTests.swift */,
 			);
 			path = BoostersTests;
 			sourceTree = "<group>";
@@ -530,7 +536,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F7125DF28819D86008CA35E /* BoostersTests.swift in Sources */,
+				5F7126F12884361A008CA35E /* AnimalsListTests.swift in Sources */,
+				5F7126ED288435AC008CA35E /* AnimalFactTests.swift in Sources */,
+				5F7126EF288435BA008CA35E /* AnimalFactsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

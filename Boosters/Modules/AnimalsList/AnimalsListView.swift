@@ -65,6 +65,7 @@ struct AnimalCategoriesView_Previews: PreviewProvider {
                     initialState: AnimalsList.State(),
                     reducer: AnimalsList.reducer,
                     environment: AnimalsList.Environment(
+                        mainQueue: .main,
                         animalsService: .mock,
                         kingfisherService: .mock
                     )

@@ -37,6 +37,7 @@ struct App {
     // MARK: - Environment
 
     struct Environment {
+        let mainQueue: AnySchedulerOf<DispatchQueue>
         let networkService: NetworkService
         let animalsService: AnimalsService
         let kingfisherService: KingfisherService
@@ -48,6 +49,7 @@ struct App {
             let kingfisherService: KingfisherService = .live()
 
             return Self(
+                mainQueue: .main,
                 networkService: networkService,
                 animalsService: animalsService,
                 kingfisherService: kingfisherService
@@ -100,6 +102,7 @@ extension App.Environment {
 
     var animalsList: AnimalsList.Environment {
         AnimalsList.Environment(
+            mainQueue: mainQueue,
             animalsService: animalsService,
             kingfisherService: kingfisherService
         )
