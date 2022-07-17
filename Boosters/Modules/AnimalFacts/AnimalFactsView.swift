@@ -26,6 +26,7 @@ struct AnimalFactsView: View {
                             .tag(ViewStore(store).id)
                     }
                 )
+                .animation(nil, value: viewStore.selectedFactID)
             }
             .animation(.default, value: viewStore.selectedFactID)
             .tabViewStyle(.page(indexDisplayMode: .never))

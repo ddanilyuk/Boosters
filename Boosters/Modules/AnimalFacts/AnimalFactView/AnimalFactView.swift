@@ -22,7 +22,7 @@ struct AnimalFactView: View {
                     GeometryReader { proxy in
                         KFImage.url(viewStore.imageURL, cacheKey: viewStore.imageCacheKey)
                             .resizable()
-                            .diskCacheExpiration(.expired)
+                            .cacheMemoryOnly()
                             .placeholder {
                                 ZStack {
                                     Rectangle()
@@ -42,8 +42,9 @@ struct AnimalFactView: View {
                     Text(viewStore.text)
                         .lineLimit(nil)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .minimumScaleFactor(0.8)
 
-                    Spacer()
+                    Spacer(minLength: 0)
 
                     HStack {
                         Button(
@@ -73,7 +74,7 @@ struct AnimalFactView: View {
                 .padding(12)
             }
             .padding(.horizontal, 20)
-            .padding(.vertical, 70)
+            .padding(.vertical, 50)
         }
     }
 
