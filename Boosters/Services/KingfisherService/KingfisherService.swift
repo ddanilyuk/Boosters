@@ -14,6 +14,8 @@ struct KingfisherService {
 
 }
 
+// MARK: - live
+
 extension KingfisherService {
 
     static func live() -> Self {
@@ -23,6 +25,8 @@ extension KingfisherService {
     }
 
 }
+
+// MARK: - mock
 
 extension KingfisherService {
 

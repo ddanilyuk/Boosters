@@ -11,7 +11,6 @@ import ComposableArchitecture
 @main
 struct BoostersApp: SwiftUI.App {
 
-    // TODO: Change?
     static let store = Store<App.State, App.Action>(
         initialState: App.State(),
         reducer: App.reducer,

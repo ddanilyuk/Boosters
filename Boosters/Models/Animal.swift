@@ -8,6 +8,7 @@
 import Foundation
 
 struct Animal {
+
     let title: String
     let description: String
     let image: String
@@ -20,6 +21,7 @@ struct Animal {
         case free
         case comingSoon
     }
+
 }
 
 // MARK: - Decodable

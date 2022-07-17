@@ -19,7 +19,7 @@
 		5F7126082881A790008CA35E /* Publisher+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126072881A790008CA35E /* Publisher+Ext.swift */; };
 		5F71260A2881A7AA008CA35E /* AnimalFactsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126092881A7AA008CA35E /* AnimalFactsStore.swift */; };
 		5F71260C2881A7B2008CA35E /* AnimalFactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71260B2881A7B2008CA35E /* AnimalFactsView.swift */; };
-		5F71260E2881A7BF008CA35E /* AnimalsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71260D2881A7BF008CA35E /* AnimalsList.swift */; };
+		5F71260E2881A7BF008CA35E /* AnimalsListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71260D2881A7BF008CA35E /* AnimalsListStore.swift */; };
 		5F7126102881A7C9008CA35E /* AnimalsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71260F2881A7C9008CA35E /* AnimalsListView.swift */; };
 		5F7126152881A824008CA35E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126142881A824008CA35E /* AppStore.swift */; };
 		5F7126182881A82D008CA35E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126172881A82D008CA35E /* AppView.swift */; };
@@ -79,7 +79,7 @@
 		5F7126072881A790008CA35E /* Publisher+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Ext.swift"; sourceTree = "<group>"; };
 		5F7126092881A7AA008CA35E /* AnimalFactsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactsStore.swift; sourceTree = "<group>"; };
 		5F71260B2881A7B2008CA35E /* AnimalFactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalFactsView.swift; sourceTree = "<group>"; };
-		5F71260D2881A7BF008CA35E /* AnimalsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsList.swift; sourceTree = "<group>"; };
+		5F71260D2881A7BF008CA35E /* AnimalsListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsListStore.swift; sourceTree = "<group>"; };
 		5F71260F2881A7C9008CA35E /* AnimalsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsListView.swift; sourceTree = "<group>"; };
 		5F7126142881A824008CA35E /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		5F7126172881A82D008CA35E /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 		5F7126012881A69C008CA35E /* AnimalsList */ = {
 			isa = PBXGroup;
 			children = (
-				5F71260D2881A7BF008CA35E /* AnimalsList.swift */,
+				5F71260D2881A7BF008CA35E /* AnimalsListStore.swift */,
 				5F71260F2881A7C9008CA35E /* AnimalsListView.swift */,
 				5F71263D2881C83B008CA35E /* AnimalCell */,
 			);
@@ -505,7 +505,7 @@
 				5F7126402881C850008CA35E /* AnimalCellView.swift in Sources */,
 				5F7126432881C870008CA35E /* AnimalCellStore.swift in Sources */,
 				5F7126342881C21E008CA35E /* RequestBuilder.swift in Sources */,
-				5F71260E2881A7BF008CA35E /* AnimalsList.swift in Sources */,
+				5F71260E2881A7BF008CA35E /* AnimalsListStore.swift in Sources */,
 				5F7126102881A7C9008CA35E /* AnimalsListView.swift in Sources */,
 				5F7126042881A707008CA35E /* Animal.swift in Sources */,
 				5F7126062881A70C008CA35E /* Fact.swift in Sources */,

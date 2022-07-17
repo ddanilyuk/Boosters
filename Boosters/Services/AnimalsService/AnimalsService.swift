@@ -14,6 +14,8 @@ struct AnimalsService {
 
 }
 
+// MARK: - live
+
 extension AnimalsService {
 
     static func live(networkService: NetworkService) -> Self {
@@ -39,6 +41,8 @@ extension AnimalsService {
     }
 
 }
+
+// MARK: - mock
 
 extension AnimalsService {
 

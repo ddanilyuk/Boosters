@@ -17,6 +17,8 @@ struct NetworkService {
 
 extension NetworkService {
 
+    // MARK: - live
+
     static func live(baseURL: URL) -> Self {
         let session = URLSession.shared
         return Self(

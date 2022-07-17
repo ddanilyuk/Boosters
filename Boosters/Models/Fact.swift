@@ -8,6 +8,7 @@
 import Foundation
 
 struct Fact {
+
     let fact: String
     let image: String
 
