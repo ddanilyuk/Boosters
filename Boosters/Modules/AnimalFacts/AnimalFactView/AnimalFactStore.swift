@@ -76,7 +76,6 @@ struct AnimalFact {
                 return .none
             }
             let shareItem = ActivityShareItem(values: [image])
-
             return Effect(value: .delegate(.share(shareItem)))
 
         case .shareTextButtonTapped:

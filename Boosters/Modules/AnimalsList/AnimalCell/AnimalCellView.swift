@@ -58,7 +58,7 @@ struct AnimalCellView: View {
     }
 
     @ViewBuilder
-    func statusView(_ status: AnimalCell.State.Status) -> some View {
+    private func statusView(_ status: AnimalCell.State.Status) -> some View {
         switch status {
         case .free:
             Text("Free")

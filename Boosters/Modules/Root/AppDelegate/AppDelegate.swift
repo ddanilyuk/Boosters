@@ -12,6 +12,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
     // MARK: - Store
 
+    // TODO: Lazy?
     lazy var appDelegateStore = BoostersApp.store.scope(
         state: \App.State.appDelegate,
         action: App.Action.appDelegate

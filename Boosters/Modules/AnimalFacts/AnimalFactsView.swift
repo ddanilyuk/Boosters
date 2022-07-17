@@ -15,21 +15,19 @@ struct AnimalFactsView: View {
 
     var body: some View {
         WithViewStore(store) { viewStore in
-            GeometryReader { proxy in
-                TabView(selection: viewStore.binding(\.$selectedFactID)) {
-                    ForEachStore(
-                        store.scope(
-                            state: \AnimalFacts.State.animalFacts,
-                            action: AnimalFacts.Action.animalFacts
-                        ),
-                        content: { store in
-                            AnimalFactView(store: store)
-                                .tag(ViewStore(store).id)
-                        }
-                    )
-                }
-                .animation(.default, value: viewStore.selectedFactID)
+            TabView(selection: viewStore.binding(\.$selectedFactID)) {
+                ForEachStore(
+                    store.scope(
+                        state: \AnimalFacts.State.animalFacts,
+                        action: AnimalFacts.Action.animalFacts
+                    ),
+                    content: { store in
+                        AnimalFactView(store: store)
+                            .tag(ViewStore(store).id)
+                    }
+                )
             }
+            .animation(.default, value: viewStore.selectedFactID)
             .tabViewStyle(.page(indexDisplayMode: .never))
             .sheet(
                 item: viewStore.binding(\.$activityShareItem),

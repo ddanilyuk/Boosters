@@ -77,7 +77,7 @@ struct AnimalFactView: View {
         }
     }
 
-    var backgroundView: some View {
+    private var backgroundView: some View {
         RoundedRectangle(cornerRadius: 32)
             .fill(.white)
             .shadow(
@@ -86,7 +86,7 @@ struct AnimalFactView: View {
             )
     }
 
-    var shareMenu: some View {
+    private var shareMenu: some View {
         WithViewStore(store) { viewStore in
             Menu(
                 content: {

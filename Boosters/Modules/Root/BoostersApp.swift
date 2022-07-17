@@ -25,4 +25,5 @@ struct BoostersApp: SwiftUI.App {
             AppView(store: BoostersApp.store)
         }
     }
+
 }
