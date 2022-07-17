@@ -10,8 +10,6 @@
 		5F7125CE28819D84008CA35E /* BoostersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125CD28819D84008CA35E /* BoostersApp.swift */; };
 		5F7125D228819D86008CA35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7125D128819D86008CA35E /* Assets.xcassets */; };
 		5F7125D528819D86008CA35E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7125D428819D86008CA35E /* Preview Assets.xcassets */; };
-		5F7125E928819D86008CA35E /* BoostersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125E828819D86008CA35E /* BoostersUITests.swift */; };
-		5F7125EB28819D86008CA35E /* BoostersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125EA28819D86008CA35E /* BoostersUITestsLaunchTests.swift */; };
 		5F7125F92881A5F9008CA35E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7125F82881A5F9008CA35E /* ComposableArchitecture */; };
 		5F7126002881A681008CA35E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7125FF2881A681008CA35E /* NetworkService.swift */; };
 		5F7126042881A707008CA35E /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7126032881A707008CA35E /* Animal.swift */; };
@@ -55,13 +53,6 @@
 			remoteGlobalIDString = 5F7125C928819D84008CA35E;
 			remoteInfo = Boosters;
 		};
-		5F7125E528819D86008CA35E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5F7125C228819D83008CA35E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5F7125C928819D84008CA35E;
-			remoteInfo = Boosters;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -70,9 +61,6 @@
 		5F7125D128819D86008CA35E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F7125D428819D86008CA35E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F7125DA28819D86008CA35E /* BoostersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoostersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F7125E428819D86008CA35E /* BoostersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoostersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F7125E828819D86008CA35E /* BoostersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostersUITests.swift; sourceTree = "<group>"; };
-		5F7125EA28819D86008CA35E /* BoostersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostersUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5F7125FF2881A681008CA35E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5F7126032881A707008CA35E /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		5F7126052881A70C008CA35E /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
@@ -123,13 +111,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F7125E128819D86008CA35E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -138,7 +119,6 @@
 			children = (
 				5F7125CC28819D84008CA35E /* Boosters */,
 				5F7125DD28819D86008CA35E /* BoostersTests */,
-				5F7125E728819D86008CA35E /* BoostersUITests */,
 				5F7125CB28819D84008CA35E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -148,7 +128,6 @@
 			children = (
 				5F7125CA28819D84008CA35E /* Boosters.app */,
 				5F7125DA28819D86008CA35E /* BoostersTests.xctest */,
-				5F7125E428819D86008CA35E /* BoostersUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,15 +162,6 @@
 				5F7126EC288435AC008CA35E /* AnimalFactTests.swift */,
 			);
 			path = BoostersTests;
-			sourceTree = "<group>";
-		};
-		5F7125E728819D86008CA35E /* BoostersUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5F7125E828819D86008CA35E /* BoostersUITests.swift */,
-				5F7125EA28819D86008CA35E /* BoostersUITestsLaunchTests.swift */,
-			);
-			path = BoostersUITests;
 			sourceTree = "<group>";
 		};
 		5F7125FB2881A610008CA35E /* Modules */ = {
@@ -404,24 +374,6 @@
 			productReference = 5F7125DA28819D86008CA35E /* BoostersTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5F7125E328819D86008CA35E /* BoostersUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5F7125F428819D86008CA35E /* Build configuration list for PBXNativeTarget "BoostersUITests" */;
-			buildPhases = (
-				5F7125E028819D86008CA35E /* Sources */,
-				5F7125E128819D86008CA35E /* Frameworks */,
-				5F7125E228819D86008CA35E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5F7125E628819D86008CA35E /* PBXTargetDependency */,
-			);
-			name = BoostersUITests;
-			productName = BoostersUITests;
-			productReference = 5F7125E428819D86008CA35E /* BoostersUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -436,10 +388,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					5F7125D928819D86008CA35E = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 5F7125C928819D84008CA35E;
-					};
-					5F7125E328819D86008CA35E = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 5F7125C928819D84008CA35E;
 					};
@@ -464,7 +412,6 @@
 			targets = (
 				5F7125C928819D84008CA35E /* Boosters */,
 				5F7125D928819D86008CA35E /* BoostersTests */,
-				5F7125E328819D86008CA35E /* BoostersUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -480,13 +427,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5F7125D828819D86008CA35E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5F7125E228819D86008CA35E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -542,15 +482,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F7125E028819D86008CA35E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F7125EB28819D86008CA35E /* BoostersUITestsLaunchTests.swift in Sources */,
-				5F7125E928819D86008CA35E /* BoostersUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -558,11 +489,6 @@
 			isa = PBXTargetDependency;
 			target = 5F7125C928819D84008CA35E /* Boosters */;
 			targetProxy = 5F7125DB28819D86008CA35E /* PBXContainerItemProxy */;
-		};
-		5F7125E628819D86008CA35E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5F7125C928819D84008CA35E /* Boosters */;
-			targetProxy = 5F7125E528819D86008CA35E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -783,42 +709,6 @@
 			};
 			name = Release;
 		};
-		5F7125F528819D86008CA35E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M92VXVU7J9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ddanilyuk.BoostersUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Boosters;
-			};
-			name = Debug;
-		};
-		5F7125F628819D86008CA35E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M92VXVU7J9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ddanilyuk.BoostersUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Boosters;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -845,15 +735,6 @@
 			buildConfigurations = (
 				5F7125F228819D86008CA35E /* Debug */,
 				5F7125F328819D86008CA35E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5F7125F428819D86008CA35E /* Build configuration list for PBXNativeTarget "BoostersUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5F7125F528819D86008CA35E /* Debug */,
-				5F7125F628819D86008CA35E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
