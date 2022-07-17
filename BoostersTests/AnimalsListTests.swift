@@ -36,7 +36,7 @@ class AnimalsListTests: XCTestCase {
             $0.isLoading = false
             $0.isLoaded = true
             $0.animals = IdentifiedArrayOf(uniqueElements: animals.sorted())
-            $0.animalsCells = IdentifiedArrayOf(
+            $0.cells = IdentifiedArrayOf(
                 uniqueElements: $0.animals.map { AnimalCell.State(animal: $0) }
             )
         }
@@ -116,13 +116,13 @@ class AnimalsListTests: XCTestCase {
             $0.isLoading = false
             $0.isLoaded = true
             $0.animals = IdentifiedArrayOf(uniqueElements: animals.sorted())
-            $0.animalsCells = IdentifiedArrayOf(
+            $0.cells = IdentifiedArrayOf(
                 uniqueElements: $0.animals.map { AnimalCell.State(animal: $0) }
             )
         }
 
         // Tap on free animal
-        store.send(.animalsCells(id: freeAnimal.id, action: .onTap))
+        store.send(.cells(id: freeAnimal.id, action: .onTap))
 
         // Details opened
         store.receive(.openDetails(animal: freeAnimal)) {
@@ -177,13 +177,13 @@ class AnimalsListTests: XCTestCase {
             $0.isLoading = false
             $0.isLoaded = true
             $0.animals = IdentifiedArrayOf(uniqueElements: animals.sorted())
-            $0.animalsCells = IdentifiedArrayOf(
+            $0.cells = IdentifiedArrayOf(
                 uniqueElements: $0.animals.map { AnimalCell.State(animal: $0) }
             )
         }
 
         // Tap on paid animal
-        store.send(.animalsCells(id: paidAnimal.id, action: .onTap)) {
+        store.send(.cells(id: paidAnimal.id, action: .onTap)) {
             $0.alert = AlertState(
                 title: TextState("Watch Ad to continue"),
                 primaryButton: .default(
@@ -250,13 +250,13 @@ class AnimalsListTests: XCTestCase {
             $0.isLoading = false
             $0.isLoaded = true
             $0.animals = IdentifiedArrayOf(uniqueElements: animals.sorted())
-            $0.animalsCells = IdentifiedArrayOf(
+            $0.cells = IdentifiedArrayOf(
                 uniqueElements: $0.animals.map { AnimalCell.State(animal: $0) }
             )
         }
 
         // Tap on coming soon animal
-        store.send(.animalsCells(id: comingSoonAnimal.id, action: .onTap)) {
+        store.send(.cells(id: comingSoonAnimal.id, action: .onTap)) {
             $0.alert = AlertState(
                 title: TextState("Coming soon"),
                 dismissButton: .default(TextState("Ok"))

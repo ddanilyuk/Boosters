@@ -25,7 +25,7 @@ struct NavigationModifier<Value, WrappedDestination: View>: ViewModifier {
         ZStack {
             NavigationLink(
                 destination: Binding(unwrapping: value)
-                    .map({ value in destination(value.wrappedValue) }),
+                    .map { value in destination(value.wrappedValue) },
                 isActive: value.isPresent(),
                 label: { Text("") }
             )

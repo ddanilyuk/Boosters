@@ -18,8 +18,8 @@ struct AnimalsListView: View {
                 List {
                     ForEachStore(
                         store.scope(
-                            state: \AnimalsList.State.animalsCells,
-                            action: AnimalsList.Action.animalsCells
+                            state: \AnimalsList.State.cells,
+                            action: AnimalsList.Action.cells
                         ),
                         content: AnimalCellView.init(store:)
                     )

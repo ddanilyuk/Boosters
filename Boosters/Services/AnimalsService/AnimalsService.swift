@@ -14,7 +14,7 @@ struct AnimalsService {
 
 }
 
-// MARK: - live
+// MARK: - Live
 
 extension AnimalsService {
 
@@ -42,7 +42,7 @@ extension AnimalsService {
 
 }
 
-// MARK: - mock
+// MARK: - Mock
 
 extension AnimalsService {
 

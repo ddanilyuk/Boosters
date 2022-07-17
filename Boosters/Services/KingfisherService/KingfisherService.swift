@@ -14,7 +14,7 @@ struct KingfisherService {
 
 }
 
-// MARK: - live
+// MARK: - Live
 
 extension KingfisherService {
 
@@ -26,7 +26,7 @@ extension KingfisherService {
 
 }
 
-// MARK: - mock
+// MARK: - Mock
 
 extension KingfisherService {
 

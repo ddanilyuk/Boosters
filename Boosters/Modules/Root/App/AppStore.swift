@@ -65,9 +65,6 @@ struct App {
             state.set(.animalsList)
             return .none
 
-        case .appDelegate:
-            return .none
-
         case .animalsList:
             return .none
         }

@@ -28,7 +28,8 @@ struct AnimalFactView: View {
                                     Rectangle()
                                         .fill(Color(.systemGroupedBackground))
 
-                                    ProgressView().progressViewStyle(.circular)
+                                    ProgressView()
+                                        .progressViewStyle(.circular)
                                 }
                             }
                             .scaledToFill()
@@ -83,7 +84,9 @@ struct AnimalFactView: View {
             .fill(.white)
             .shadow(
                 color: .black.opacity(0.3),
-                radius: 20, x: 0, y: 5
+                radius: 20,
+                x: 0,
+                y: 5
             )
     }
 
@@ -133,12 +136,14 @@ struct AnimalFactView_Previews: PreviewProvider {
             AnimalFactView(
                 store: Store(
                     initialState: AnimalFact.State(
-                        fact: Animal.mock.content![0],
+                        fact: Fact.mock,
                         previousButtonVisible: true,
                         nextButtonVisible: true
                     ),
                     reducer: AnimalFact.reducer,
-                    environment: AnimalFact.Environment(kingfisherService: .mock)
+                    environment: AnimalFact.Environment(
+                        kingfisherService: .mock
+                    )
                 )
             )
         }

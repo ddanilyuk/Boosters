@@ -14,7 +14,7 @@ struct AnimalsList {
 
     struct State: Equatable {
         var animals: IdentifiedArrayOf<Animal>
-        var animalsCells: IdentifiedArrayOf<AnimalCell.State>
+        var cells: IdentifiedArrayOf<AnimalCell.State>
 
         var isLoaded = false
         @BindableState var isLoading = false
@@ -29,7 +29,7 @@ struct AnimalsList {
         init() {
             let redactedAnimals = [Animal.redacted1, .redacted2]
             animals = IdentifiedArrayOf(uniqueElements: redactedAnimals)
-            animalsCells = IdentifiedArrayOf(
+            cells = IdentifiedArrayOf(
                 uniqueElements: redactedAnimals.map { AnimalCell.State(animal: $0) }
             )
         }
@@ -39,14 +39,12 @@ struct AnimalsList {
 
     enum Action: Equatable, BindableAction {
         case onAppear
-
         case getAnimalsResponse(Result<[Animal], NetworkError>)
-        case animalsCells(id: Animal.ID, action: AnimalCell.Action)
+        case cells(id: Animal.ID, action: AnimalCell.Action)
         case showAd(animal: Animal)
         case openDetails(animal: Animal)
 
         case selectedAnimalFacts(AnimalFacts.Action)
-
         case dismissAlert
         case binding(BindingAction<State>)
     }
@@ -90,7 +88,7 @@ struct AnimalsList {
             state.isLoading = false
             state.isLoaded = true
             state.animals = IdentifiedArrayOf(uniqueElements: animals.sorted())
-            state.animalsCells = IdentifiedArrayOf(
+            state.cells = IdentifiedArrayOf(
                 uniqueElements: state.animals.map { AnimalCell.State(animal: $0) }
             )
             return .none
@@ -104,7 +102,7 @@ struct AnimalsList {
             )
             return .none
 
-        case let .animalsCells(id, .onTap):
+        case let .cells(id, .onTap):
             guard let animal = state.animals[id: id] else {
                 return .none
             }
@@ -142,14 +140,11 @@ struct AnimalsList {
             state.selectedAnimalFacts = AnimalFacts.State(animal: animal)
             return .none
 
+        case .selectedAnimalFacts:
+            return .none
+
         case .dismissAlert:
             state.alert = nil
-            return .none
-
-        case .animalsCells:
-            return .none
-
-        case .selectedAnimalFacts:
             return .none
 
         case .binding:

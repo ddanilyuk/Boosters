@@ -53,12 +53,6 @@ extension Animal: Decodable {
     
 }
 
-// MARK: - Equatable
-
-extension Animal: Equatable {
-
-}
-
 // MARK: - Comparable
 
 extension Animal: Comparable {
@@ -68,7 +62,6 @@ extension Animal: Comparable {
     }
 
 }
-
 
 // MARK: - Identifiable
 
@@ -80,6 +73,14 @@ extension Animal: Identifiable {
     
 }
 
+// MARK: - Equatable
+
+extension Animal: Equatable {
+
+}
+
+// MARK: - Mock
+
 extension Animal {
 
     static var mock = Animal(
@@ -88,12 +89,7 @@ extension Animal {
         image: "https://upload.wikimedia.org/wikipedia/commons/2/2b/WelshCorgi.jpeg",
         order: 2,
         status: .paid,
-        content: [
-            Fact(
-                fact: "During the Renaissance, detailed portraits of the dog as a symbol of fidelity and loyalty appeared in mythological, allegorical, and religious art throughout Europe, including works by Leonardo da Vinci, Diego Velázquez, Jan van Eyck, and Albrecht Durer. ",
-                image: "https://images.dog.ceo/breeds/basenji/n02110806_4150.jpg"
-            )
-        ]
+        content: [Fact.mock]
     )
 
     static var redacted1 = Animal(

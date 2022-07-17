@@ -49,7 +49,7 @@ extension Publisher {
         }
         .eraseToAnyPublisher()
     }
-    
+
 }
 
 extension Publisher where Output == Data, Failure == NetworkError {
